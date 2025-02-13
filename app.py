@@ -75,10 +75,13 @@ def main():
     # 모델 초기화 (먼저 실행)
     llm, embed_model = initialize_models()
     
+    if llm is None or embed_model is None:
+        st.error("모델 초기화에 실패했습니다. API 토큰을 확인해주세요.")
+        return
+        
     index = get_index_from_huggingface()
     
     if index is not None:        
-        
         # 쿼리 엔진 생성
         query_engine = index.as_query_engine(response_mode="compact")
         
@@ -86,10 +89,14 @@ def main():
         user_question = st.text_input("질문을 입력해주세요:")
         
         if user_question:
-            with st.spinner('답변을 생성하고 있습니다...'):
-                response = query_engine.query(user_question)
-                st.write("답변:")
-                st.info(" " + response.response)
+            try:
+                with st.spinner('답변을 생성하고 있습니다...'):
+                    response = query_engine.query(user_question)
+                    st.write("답변:")
+                    st.info(" " + response.response)
+            except Exception as e:
+                st.error(f"답변 생성 중 오류가 발생했습니다: {str(e)}")
+                st.error("잠시 후 다시 시도해주세요.")
 
 if __name__ == "__main__":
     main()
