@@ -84,17 +84,13 @@ def main():
     
     if index is not None:        
         # 쿼리 엔진 생성
-        query_engine = index.as_query_engine(
-            response_mode="tree_summarize",
-            streaming=True
-        )
+        query_engine = index.as_query_engine(response_mode="compact")
         
         # 사용자 입력 받기
         user_question = st.text_input("질문을 입력해주세요:")
         
         if user_question:
             try:
-                response_container = st.empty()
                 with st.spinner('답변을 생성하고 있습니다...'):
                     response = query_engine.query(user_question)
                     st.write("답변:")
