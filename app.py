@@ -71,6 +71,7 @@ def get_index_from_huggingface():
 
 def main():
     st.title('PDF 문서 기반 질의응답 시스템')
+    st.write("선진기업복지 업무메뉴얼을 기반으로 질의응답을 제공합니다.")
 
     # 모델 초기화 (먼저 실행)
     llm, embed_model = initialize_models()
