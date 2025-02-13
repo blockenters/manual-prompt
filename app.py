@@ -9,6 +9,7 @@ from huggingface_hub import snapshot_download
 from llama_index.core import StorageContext, load_index_from_storage
 import os
 
+@st.cache_resource  # 캐싱 추가
 def get_huggingface_token():
     """환경 변수 또는 streamlit secrets에서 토큰을 가져오는 함수"""
     token = os.environ.get("HUGGINGFACE_API_TOKEN")
@@ -20,6 +21,7 @@ def get_huggingface_token():
             return None
     return token
 
+@st.cache_resource  # 캐싱 추가
 def initialize_models():
     model_name = "mistralai/Mistral-7B-Instruct-v0.2"
     
@@ -42,6 +44,7 @@ def initialize_models():
     
     return llm, embed_model
 
+@st.cache_resource  # 캐싱 추가
 def get_index_from_huggingface():
     try:
         repo_id = "blockenters/manula-index2"
