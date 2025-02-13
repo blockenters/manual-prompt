@@ -33,7 +33,7 @@ def initialize_models():
         model_name=model_name,
         max_new_tokens=512,
         temperature=0,
-        system_prompt="당신은 한국어로 대답하는 AI 어시스턴트 입니다. 주어진 질문에 대해서만 한국어로 명확하고 정확하게 답변해주세요. 이전 대화 내용은 포함하지 마세요. 문장 단위로 대답해주세요.",
+        system_prompt="당신은 한국어로 대답하는 AI 어시스턴트 입니다. 주어진 질문에 대해서만 한국어로 명확하고 정확하게 답변해주세요. 이전 대화 내용은 포함하지 마세요. 응답의 마지막 부분은 문장으로 끝나도록 해주세요.",
         token=token
     )
 
