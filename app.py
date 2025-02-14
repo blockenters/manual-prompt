@@ -2,7 +2,7 @@ import streamlit as st
 from pypdf import PdfReader
 import torch
 from llama_index.core import Document, VectorStoreIndex, Settings
-from llama_index.llms.huggingface import HuggingFaceInferenceAPI
+from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 from huggingface_hub import snapshot_download
