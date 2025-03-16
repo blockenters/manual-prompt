@@ -5,3 +5,5 @@ llama-index-llms-huggingface-api
 torch
 streamlit
 huggingface-hub
+llama-index-embeddings-openai
+openai
