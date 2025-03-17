@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="900" height="700" fill="#f9f9f9" rx="10" ry="10"/>
+  
+  <!-- 제목 -->
+  <text x="450" y="40" font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle" fill="#333333">RAG(Retrieval-Augmented Generation) 아키텍처</text>
+  <text x="450" y="70" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">검색 기반 증강 생성 시스템의 기술적 구성 및 데이터 흐름</text>
+  
+  <!-- 시스템 개요 설명 -->
+  <g transform="translate(50, 90)">
+    <rect x="0" y="0" width="800" height="60" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+    <text x="400" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1976d2">RAG 시스템 정의</text>
+    <text x="400" y="45" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">외부 지식을 검색하여 언어 모델의 생성 프로세스를 증강하는 하이브리드 아키텍처</text>
+  </g>
+  
+  <!-- 메인 파이프라인 다이어그램 -->
+  <g transform="translate(50, 170)">
+    <!-- 1. 인덱싱 파이프라인 - 왼쪽 -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="240" height="50" rx="5" ry="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+      <text x="120" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">인덱싱 파이프라인</text>
+      
+      <!-- 인덱싱 세부 단계 -->
+      <rect x="20" y="70" width="200" height="220" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+      
+      <!-- 문서 수집 -->
+      <rect x="40" y="90" width="160" height="40" rx="3" ry="3" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
+      <text x="120" y="115" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">문서 수집</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,130 L120,150" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 문서 처리 -->
+      <rect x="40" y="150" width="160" height="40" rx="3" ry="3" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
+      <text x="120" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">텍스트 청킹 및 전처리</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,190 L120,210" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 임베딩 생성 -->
+      <rect x="40" y="210" width="160" height="40" rx="3" ry="3" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
+      <text x="120" y="235" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">임베딩 생성</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,250 L120,270" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 벡터 저장 -->
+      <rect x="40" y="270" width="160" height="40" rx="3" ry="3" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
+      <text x="120" y="295" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">벡터 DB 저장</text>
+    </g>
+    
+    <!-- 2. 검색 파이프라인 - 가운데 -->
+    <g transform="translate(280, 0)">
+      <rect x="0" y="0" width="240" height="50" rx="5" ry="5" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
+      <text x="120" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">검색 파이프라인</text>
+      
+      <!-- 검색 세부 단계 -->
+      <rect x="20" y="70" width="200" height="220" rx="5" ry="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/>
+      
+      <!-- 사용자 쿼리 -->
+      <rect x="40" y="90" width="160" height="40" rx="3" ry="3" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+      <text x="120" y="115" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">사용자 쿼리 입력</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,130 L120,150" stroke="#2e7d32" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 쿼리 임베딩 -->
+      <rect x="40" y="150" width="160" height="40" rx="3" ry="3" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+      <text x="120" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">쿼리 임베딩 변환</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,190 L120,210" stroke="#2e7d32" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 유사도 검색 -->
+      <rect x="40" y="210" width="160" height="40" rx="3" ry="3" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+      <text x="120" y="235" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">벡터 유사도 검색</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,250 L120,270" stroke="#2e7d32" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 관련 문서 검색 -->
+      <rect x="40" y="270" width="160" height="40" rx="3" ry="3" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+      <text x="120" y="295" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">관련 문서 청크 검색</text>
+    </g>
+    
+    <!-- 3. 생성 파이프라인 - 오른쪽 -->
+    <g transform="translate(560, 0)">
+      <rect x="0" y="0" width="240" height="50" rx="5" ry="5" fill="#f8bbd0" stroke="#c2185b" stroke-width="2"/>
+      <text x="120" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">생성 파이프라인</text>
+      
+      <!-- 생성 세부 단계 -->
+      <rect x="20" y="70" width="200" height="220" rx="5" ry="5" fill="#fce4ec" stroke="#c2185b" stroke-width="1"/>
+      
+      <!-- 컨텍스트 조합 -->
+      <rect x="40" y="90" width="160" height="40" rx="3" ry="3" fill="#f8bbd0" stroke="#c2185b" stroke-width="1"/>
+      <text x="120" y="115" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">검색 결과 컨텍스트화</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,130 L120,150" stroke="#c2185b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 프롬프트 구성 -->
+      <rect x="40" y="150" width="160" height="40" rx="3" ry="3" fill="#f8bbd0" stroke="#c2185b" stroke-width="1"/>
+      <text x="120" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">프롬프트 구성</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,190 L120,210" stroke="#c2185b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- LLM 추론 -->
+      <rect x="40" y="210" width="160" height="40" rx="3" ry="3" fill="#f8bbd0" stroke="#c2185b" stroke-width="1"/>
+      <text x="120" y="235" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">LLM 추론</text>
+      
+      <!-- 화살표 -->
+      <path d="M120,250 L120,270" stroke="#c2185b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      
+      <!-- 응답 생성 -->
+      <rect x="40" y="270" width="160" height="40" rx="3" ry="3" fill="#f8bbd0" stroke="#c2185b" stroke-width="1"/>
+      <text x="120" y="295" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">최종 응답 생성</text>
+    </g>
+    
+    <!-- 파이프라인 간 연결 화살표 -->
+    <!-- 인덱싱 -> 검색 -->
+    <path d="M240,180 L280,180" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <!-- 검색 -> 생성 -->
+    <path d="M520,180 L560,180" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- 핵심 기술 요소 설명 -->
+  <g transform="translate(50, 500)">
+    <text x="400" y="10" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333333">RAG 핵심 기술 요소</text>
+    
+    <!-- 1. 임베딩 모델 -->
+    <rect x="0" y="30" width="250" height="100" rx="5" ry="5" fill="#e0f7fa" stroke="#006064" stroke-width="1"/>
+    <text x="125" y="50" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">임베딩 모델</text>
+    <text x="10" y="70" font-family="Arial" font-size="12" fill="#333333">• 텍스트를 고차원 벡터로 인코딩</text>
+    <text x="10" y="90" font-family="Arial" font-size="12" fill="#333333">• 의미적 유사성 계산 기반 제공</text>
+    <text x="10" y="110" font-family="Arial" font-size="12" fill="#333333">• 언어별/도메인별 특성화 가능</text>
+    
+    <!-- 2. 벡터 데이터베이스 -->
+    <rect x="275" y="30" width="250" height="100" rx="5" ry="5" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+    <text x="400" y="50" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">벡터 데이터베이스</text>
+    <text x="285" y="70" font-family="Arial" font-size="12" fill="#333333">• 고차원 벡터 효율적 색인 및 검색</text>
+    <text x="285" y="90" font-family="Arial" font-size="12" fill="#333333">• ANN(Approximate Nearest Neighbor) 알고리즘</text>
+    <text x="285" y="110" font-family="Arial" font-size="12" fill="#333333">• 메타데이터 필터링 기능</text>
+    
+    <!-- 3. 언어 모델 -->
+    <rect x="550" y="30" width="250" height="100" rx="5" ry="5" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1"/>
+    <text x="675" y="50" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">언어 모델 (LLM)</text>
+    <text x="560" y="70" font-family="Arial" font-size="12" fill="#333333">• 검색된 컨텍스트 기반 자연어 생성</text>
+    <text x="560" y="90" font-family="Arial" font-size="12" fill="#333333">• 제공된 정보 기반 추론 및 종합</text>
+    <text x="560" y="110" font-family="Arial" font-size="12" fill="#333333">• 환각(Hallucination) 감소</text>
+  </g>
+  
+  <!-- 성능 최적화 전략 -->
+  <!-- <g transform="translate(50, 540)">
+    <rect x="0" y="0" width="800" height="140" rx="5" ry="5" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1"/>
+    <text x="400" y="25" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333333">RAG 시스템 최적화 전략</text> -->
+    
+    <!-- 검색 최적화 -->
+    <!-- <text x="30" y="55" font-family="Arial" font-size="14" font-weight="bold" fill="#333333">검색 최적화</text>
+    <text x="30" y="75" font-family="Arial" font-size="12" fill="#333333">• 청크 사이즈(256-1024토큰) 및 오버랩(10-30%) 조정</text>
+    <text x="30" y="95" font-family="Arial" font-size="12" fill="#333333">• 유사도 임계값 설정(Top-k, 유사도 기반 필터링)</text> -->
+    
+    <!-- 생성 최적화 -->
+    <!-- <text x="400" y="55" font-family="Arial" font-size="14" font-weight="bold" fill="#333333">생성 최적화</text>
+    <text x="400" y="75" font-family="Arial" font-size="12" fill="#333333">• 다양한 프롬프트 전략(refine, map-reduce, 등)</text>
+    <text x="400" y="95" font-family="Arial" font-size="12" fill="#333333">• LLM 파라미터 튜닝(temperature, top_p)</text> -->
+    
+    <!-- 평가 지표 -->
+    <!-- <text x="30" y="125" font-family="Arial" font-size="14" font-weight="bold" fill="#333333">평가 지표: Precision, Recall, MRR, BLEU, ROUGE, 팩트 정확성, 응답 관련성</text>
+  </g> -->
+  
+  <!-- 화살표 마커 정의 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333333" />
+    </marker>
+  </defs>
+</svg> 

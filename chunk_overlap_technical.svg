@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#f9f9f9" rx="10" ry="10"/>
+  
+  <!-- 제목 -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">청크 오버랩과 시맨틱 연속성 보존</text>
+  
+  <!-- 설명 텍스트 -->
+  <text x="400" y="70" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">인접 청크 간 시맨틱 연결성을 유지하기 위한 중첩 방식과 검색 성능에 미치는 영향</text>
+  
+  <!-- 상단 설명 -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="700" height="60" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+    <text x="350" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1976d2">청크 오버랩 정의</text>
+    <text x="350" y="45" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">벡터 데이터베이스 색인 시 인접 청크 간 일정 비율(또는 토큰 수)의 중첩 영역을 유지하는 문서 분할 전략</text>
+  </g>
+  
+  <!-- 오버랩 다이어그램 -->
+  <g transform="translate(50, 180)">
+    <text x="350" y="0" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333333">오버랩 전략 비교: 시맨틱 연속성 제어</text>
+  </g>
+  
+  <!-- 왼쪽: 오버랩 없음 -->
+  <g transform="translate(50, 200)">
+    <text x="150" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#c62828">무중첩 분할 (Stride = Size)</text>
+    <text x="150" y="40" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">청크 간 경계가 분리된 상태</text>
+    
+    <!-- 시각화: 분리된 블록 -->
+    <g fill="#ffcdd2" stroke="#c62828" stroke-width="1.5">
+      <rect x="50" y="60" width="80" height="40" rx="0" ry="0"/>
+      <rect x="140" y="60" width="80" height="40" rx="0" ry="0"/>
+      <rect x="230" y="60" width="80" height="40" rx="0" ry="0"/>
+    </g>
+    
+    <!-- 경계선 표시 -->
+    <path d="M130,60 L130,100" stroke="#c62828" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <path d="M220,60 L220,100" stroke="#c62828" stroke-width="1.5" stroke-dasharray="4,2"/>
+    
+    <!-- 기술적 내용 -->
+    <rect x="0" y="120" width="350" height="130" rx="5" ry="5" fill="#ffebee" stroke="#c62828" stroke-width="1"/>
+    <text x="175" y="140" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">시맨틱 단절 이슈</text>
+    
+    <g transform="translate(20, 160)">
+      <text font-family="Arial" font-size="13" font-weight="bold" fill="#333333">정보 손실 취약점</text>
+      <text x="0" y="20" font-family="Arial" font-size="12" fill="#555555">• 경계 영역(boundary)에서 시맨틱 단절 발생</text>
+      <text x="0" y="40" font-family="Arial" font-size="12" fill="#555555">• 청크 간 문맥(context) 연결성 부재</text>
+      <text x="0" y="60" font-family="Arial" font-size="12" fill="#555555">• 복합 개념 분산으로 검색 정확도 저하</text>
+      <text x="0" y="80" font-family="Arial" font-size="12" fill="#555555">• 다중 청크 스패닝 질의 취약</text>
+    </g>
+  </g>
+  
+  <!-- 오른쪽: 오버랩 있음 -->
+  <g transform="translate(425, 200)">
+    <text x="150" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d32">중첩 분할 (Stride &lt; Size)</text>
+    <text x="150" y="40" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">청크 간 일정 영역 중첩</text>
+    
+    <!-- 시각화: 중첩된 블록 -->
+    <g>
+      <rect x="50" y="60" width="100" height="40" rx="0" ry="0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
+      <rect x="110" y="60" width="100" height="40" rx="0" ry="0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
+      <rect x="170" y="60" width="100" height="40" rx="0" ry="0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
+      
+      <!-- 중첩 영역 강조 -->
+      <rect x="110" y="60" width="40" height="40" rx="0" ry="0" fill="#66bb6a" stroke="none" fill-opacity="0.7"/>
+      <rect x="170" y="60" width="40" height="40" rx="0" ry="0" fill="#66bb6a" stroke="none" fill-opacity="0.7"/>
+      
+      <!-- 중첩 레이블 -->
+      <text x="130" y="83" font-family="Arial" font-size="10" text-anchor="middle" fill="#1b5e20">중첩</text>
+      <text x="190" y="83" font-family="Arial" font-size="10" text-anchor="middle" fill="#1b5e20">중첩</text>
+    </g>
+    
+    <!-- 기술적 내용 -->
+    <rect x="0" y="120" width="350" height="130" rx="5" ry="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/>
+    <text x="175" y="140" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">시맨틱 연속성 향상</text>
+    
+    <g transform="translate(20, 160)">
+      <text font-family="Arial" font-size="13" font-weight="bold" fill="#333333">시맨틱 브리징 효과</text>
+      <text x="0" y="20" font-family="Arial" font-size="12" fill="#555555">• 문맥 전이(context transition) 보존</text>
+      <text x="0" y="40" font-family="Arial" font-size="12" fill="#555555">• 경계 영역의 단어/개념 중복 보존</text>
+      <text x="0" y="60" font-family="Arial" font-size="12" fill="#555555">• 검색 리콜(recall) 성능 향상</text>
+      <text x="0" y="80" font-family="Arial" font-size="12" fill="#555555">• 스트라이드 파라미터와 청크 사이즈의 최적 비율: 0.1-0.5</text>
+    </g>
+  </g>
+  
+  <!-- 하단: 실험적 결과 -->
+  <g transform="translate(50, 370)">
+    <rect x="0" y="0" width="700" height="60" rx="5" ry="5" fill="#e0f7fa" stroke="#006064" stroke-width="1"/>
+    <text x="350" y="20" font-family="Arial" font-size="15" font-weight="bold" text-anchor="middle" fill="#333333">오버랩 비율에 따른 검색 성능 특성</text>
+    <text x="20" y="40" font-family="Arial" font-size="12" fill="#333333">• 오버랩 증가(~20%) → 리콜(Recall) 향상 / 스토리지 비용 증가 (선형적 관계)</text>
+    <text x="20" y="55" font-family="Arial" font-size="12" fill="#333333">• 과도한 오버랩(&gt;50%) → 검색 중복성 증가 / 연산 효율성 감소 / 벡터 DB 저장공간 비효율</text>
+  </g>
+  
+  <!-- 실제 구현 코드 예시 -->
+  <g transform="translate(50, 450)">
+    <rect x="0" y="0" width="700" height="70" rx="5" ry="5" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1"/>
+    <text x="350" y="20" font-family="Arial" font-size="15" font-weight="bold" text-anchor="middle" fill="#333333">코드 구현 방식</text>
+    
+    <text x="20" y="40" font-family="Arial" font-size="12" fill="#333333">text_splitter = RecursiveCharacterTextSplitter(</text>
+    <text x="40" y="55" font-family="Arial" font-size="12" fill="#333333">chunk_size=512, chunk_overlap=128, separators=["\n\n", "\n", " ", ""])</text>
+    <text x="20" y="65" font-family="Arial" font-size="11" fill="#555555">청크 오버랩이 총 청크 크기의 약 25%로 설정된 문서 분할기 구현 예시</text>
+  </g>
+  
+  <!-- 추가된 실무 최적화 팁 -->
+  <g transform="translate(50, 540)">
+    <rect x="0" y="0" width="700" height="50" rx="5" ry="5" fill="#ede7f6" stroke="#4527a0" stroke-width="1"/>
+    <text x="350" y="20" font-family="Arial" font-size="15" font-weight="bold" text-anchor="middle" fill="#333333">실무 최적화 팁</text>
+    <text x="350" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">한국어 문서 처리 시 자연스러운 문맥 유지를 위해 25-30% 오버랩 비율 권장 (특히 복합 문장 구조 문서)</text>
+  </g>
+  
+  <!-- 화살표 마커 정의 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333333" />
+    </marker>
+  </defs>
+</svg> 

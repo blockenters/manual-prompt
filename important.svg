@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#f9f9f9" rx="10" ry="10"/>
+  
+  <!-- 제목 -->
+  <text x="400" y="50" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">RAG 시스템 성능 결정 요소</text>
+  <text x="400" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#555555">세 가지 핵심 요소의 상호작용과 최적 조합</text>
+  
+  <!-- 중앙 성능 지표 -->
+  <g transform="translate(300, 200)">
+    <circle cx="100" cy="100" r="80" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <text x="100" y="90" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#1b5e20">RAG 시스템</text>
+    <text x="100" y="115" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#1b5e20">검색 성능</text>
+  </g>
+  
+  <!-- 임베딩 모델 요소 -->
+  <g transform="translate(110, 120)">
+    <rect x="0" y="0" width="180" height="90" rx="10" ry="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#1976d2">임베딩 모델</text>
+    <text x="90" y="55" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">벡터 표현력과 차원</text>
+    <text x="90" y="75" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">언어 이해도</text>
+    
+    
+  </g>
+  
+  <!-- 청크 사이즈 요소 -->
+  <g transform="translate(510, 120)">
+    <rect x="0" y="0" width="180" height="90" rx="10" ry="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#7b1fa2">청크 사이즈</text>
+    <text x="90" y="55" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">문맥 보존 vs 정밀도</text>
+    <text x="90" y="75" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">토큰/문자 단위 설정</text>
+    
+   
+  </g>
+  
+  <!-- 청크 오버랩 요소 -->
+  <g transform="translate(310, 420)">
+    <rect x="0" y="0" width="180" height="90" rx="10" ry="10" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#e65100">청크 오버랩</text>
+    <text x="90" y="55" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">시맨틱 연속성</text>
+    <text x="90" y="75" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">경계 정보 보존</text>
+    
+   
+  </g>
+  
+    
+  
+  
+  <!-- 화살표 마커 정의 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333333" />
+    </marker>
+  </defs>
+</svg>

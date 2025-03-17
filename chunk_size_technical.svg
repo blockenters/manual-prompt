@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#f9f9f9" rx="10" ry="10"/>
+  
+  <!-- 제목 -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">청크 사이즈 최적화와 문서 분할 전략</text>
+  
+  <!-- 설명 텍스트 -->
+  <text x="400" y="70" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">텍스트 코퍼스를 벡터화하기 위한 문서 분할 단위 설정 및 그 영향 분석</text>
+  
+  <!-- 상단 설명 -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="700" height="60" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+    <text x="350" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1976d2">청크 사이즈 정의</text>
+    <text x="350" y="45" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">벡터 데이터베이스에 저장될 문서 분할 단위의 크기(토큰 또는 문자 수)</text>
+  </g>
+  
+  <!-- 청크 사이즈 비교 다이어그램 -->
+  <g transform="translate(50, 180)">
+    <text x="350" y="0" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333333">청크 사이즈 비교: 텍스트 분할 전략</text>
+    
+    <!-- 원본 문서 -->
+    <rect x="250" y="20" width="200" height="60" rx="5" ry="5" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+    <text x="350" y="40" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">원본 문서 (코퍼스)</text>
+    <text x="350" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">N 토큰 텍스트</text>
+    
+    <!-- 화살표 아래로 -->
+    <path d="M350,80 L350,100" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    
+    <!-- 분할 방법 -->
+    <text x="350" y="120" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">벡터 데이터베이스 색인 전략</text>
+  </g>
+  
+  <!-- 왼쪽: 작은 청크 -->
+  <g transform="translate(50, 220)">
+    <text x="150" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#0097a7">소형 청크 (256 토큰)</text>
+    <text x="150" y="40" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">세분화된 텍스트 단위</text>
+    
+    <!-- 청크 시각화 -->
+    <g fill="#e0f7fa" stroke="#0097a7" stroke-width="1">
+      <rect x="20" y="60" width="50" height="30" rx="2" ry="2"/>
+      <rect x="85" y="60" width="50" height="30" rx="2" ry="2"/>
+      <rect x="150" y="60" width="50" height="30" rx="2" ry="2"/>
+      <rect x="215" y="60" width="50" height="30" rx="2" ry="2"/>
+    </g>
+    
+    <!-- 연결 라인 -->
+    <line x1="70" y1="75" x2="85" y2="75" stroke="#0097a7" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="135" y1="75" x2="150" y2="75" stroke="#0097a7" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="200" y1="75" x2="215" y2="75" stroke="#0097a7" stroke-width="1" stroke-dasharray="3,3"/>
+    
+    <!-- 기술적 분석 -->
+    <rect x="0" y="110" width="300" height="180" rx="5" ry="5" fill="#b2ebf2" stroke="#0097a7" stroke-width="1"/>
+    <text x="150" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">소형 청크 특성</text>
+    
+    <text x="20" y="155" font-family="Arial" font-size="13" font-weight="bold" fill="#333333">검색 정밀도 (Precision)</text>
+    <text x="20" y="175" font-family="Arial" font-size="12" fill="#555555">• 높은 검색 정확도</text>
+    <text x="20" y="195" font-family="Arial" font-size="12" fill="#555555">• 특정 정보 검색에 최적화</text>
+    
+    <text x="20" y="220" font-family="Arial" font-size="13" font-weight="bold" fill="#333333">문맥 정보 (Context)</text>
+    <text x="20" y="240" font-family="Arial" font-size="12" fill="#555555">• 제한된 문맥 정보</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" fill="#555555">• 토큰 수 한계로 인한 의미 단절</text>
+    
+    <text x="20" y="280" font-family="Arial" font-size="12" fill="#555555">벡터 DB 항목 수: O(N/256)</text>
+  </g>
+  
+  <!-- 오른쪽: 큰 청크 -->
+  <g transform="translate(450, 220)">
+    <text x="150" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#7b1fa2">대형 청크 (512-1024 토큰)</text>
+    <text x="150" y="40" font-family="Arial" font-size="14" text-anchor="middle" fill="#555555">광범위한 문맥 단위</text>
+    
+    <!-- 청크 시각화 -->
+    <g fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1">
+      <rect x="50" y="60" width="100" height="30" rx="2" ry="2"/>
+      <rect x="170" y="60" width="100" height="30" rx="2" ry="2"/>
+    </g>
+    
+    <!-- 연결 라인 -->
+    <line x1="150" y1="75" x2="170" y2="75" stroke="#7b1fa2" stroke-width="1" stroke-dasharray="3,3"/>
+    
+    <!-- 기술적 분석 -->
+    <rect x="0" y="110" width="300" height="180" rx="5" ry="5" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1"/>
+    <text x="150" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">대형 청크 특성</text>
+    
+    <text x="20" y="155" font-family="Arial" font-size="13" font-weight="bold" fill="#333333">문맥 보존 (Context Retention)</text>
+    <text x="20" y="175" font-family="Arial" font-size="12" fill="#555555">• 풍부한 문맥 정보 유지</text>
+    <text x="20" y="195" font-family="Arial" font-size="12" fill="#555555">• 의미적 연속성 보존</text>
+    
+    <text x="20" y="220" font-family="Arial" font-size="13" font-weight="bold" fill="#333333">검색 효율 (Retrieval)</text>
+    <text x="20" y="240" font-family="Arial" font-size="12" fill="#555555">• 문맥 의존적 질의에 강점</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" fill="#555555">• 불필요한 정보 포함 가능성</text>
+    
+    <text x="20" y="280" font-family="Arial" font-size="12" fill="#555555">벡터 DB 항목 수: O(N/1024)</text>
+  </g>
+  
+  <!-- 하단 기술적 고려사항 -->
+  <g transform="translate(50, 450)">
+    <rect x="0" y="0" width="700" height="80" rx="5" ry="5" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+    <text x="350" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">청크 사이즈 선택 고려사항</text>
+    
+    <text x="20" y="50" font-family="Arial" font-size="13" fill="#333333">• 텍스트 특성: 언어 구조, 도메인 특성 (한국어: 주어-서술어 거리, 문맥 의존성)</text>
+    <text x="20" y="70" font-family="Arial" font-size="13" fill="#333333">• 임베딩 모델 컨텍스트 윈도우: 모델이 처리할 수 있는 최대 토큰 수 제약</text>
+  </g>
+  
+  <!-- 추가 응용 사례 -->
+  <g transform="translate(50, 540)">
+    <rect x="0" y="0" width="700" height="50" rx="5" ry="5" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1"/>
+    <text x="350" y="20" font-family="Arial" font-size="15" font-weight="bold" text-anchor="middle" fill="#333333">실무 응용 시나리오</text>
+    <text x="350" y="40" font-family="Arial" font-size="13" text-anchor="middle" fill="#333333">퇴직연금 문서: 한국어 특성상 더 큰 청크(512토큰)가 의미적 정확도와 응답 품질 향상</text>
+  </g>
+  
+  <!-- 화살표 마커 정의 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333333" />
+    </marker>
+  </defs>
+</svg> 
