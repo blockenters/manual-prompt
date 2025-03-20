@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG 시스템 쉽게 이해하기 - 슬라이드</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .slides-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .slide {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+        }
+        .slide-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        .slide img, .slide object {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .slide-description {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .download-all {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            width: 200px;
+        }
+        .download-all:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>RAG 시스템 쉽게 이해하기</h1>
+    
+    <div class="slides-container">
+        <div class="slide">
+            <div class="slide-title">슬라이드 1: RAG 시스템 소개</div>
+            <object data="rag_presentation.svg" type="image/svg+xml"></object>
+            <div class="slide-description">RAG의 정의와 주요 활용 사례, 핵심 구성 요소 소개</div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-title">슬라이드 2: RAG 작동 방식</div>
+            <object data="rag_presentation_slide2.svg" type="image/svg+xml"></object>
+            <div class="slide-description">정보 검색(Retrieval)과 답변 생성(Generation) 단계를 통한 RAG 작동 원리</div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-title">슬라이드 3: RAG의 핵심 구성 요소</div>
+            <object data="rag_presentation_slide3.svg" type="image/svg+xml"></object>
+            <div class="slide-description">임베딩 모델, 청크 사이즈, 청크 오버랩의 최적화 방법</div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-title">슬라이드 4: RAG의 현업 활용 사례</div>
+            <object data="rag_presentation_slide4.svg" type="image/svg+xml"></object>
+            <div class="slide-description">기업 내부 지식관리, 고객 서비스 개선, 전문 분야 지식 활용 등</div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-title">슬라이드 5: RAG 시스템 구축 첫걸음</div>
+            <object data="rag_presentation_slide5.svg" type="image/svg+xml"></object>
+            <div class="slide-description">RAG 시스템 구축을 위한 5단계 과정과 코드 예시</div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-title">슬라이드 6: RAG의 장점과 결론</div>
+            <object data="rag_presentation_slide6.svg" type="image/svg+xml"></object>
+            <div class="slide-description">RAG의 주요 장점과 맞춤형 AI 구축에 관한 결론</div>
+        </div>
+    </div>
+    
+    <a href="#" class="download-all">모든 슬라이드 다운로드</a>
+    
+    <script>
+        document.querySelector('.download-all').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('이 버튼을 누르면 모든 SVG 파일이 압축되어 다운로드됩니다. (실제 기능은 서버 측 구현이 필요합니다)');
+        });
+    </script>
+</body>
+</html> 

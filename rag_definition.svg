@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 및 전체 스타일 -->
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      text {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+      .slide-title {
+        font-size: 36px;
+        font-weight: bold;
+        fill: #2c3e50;
+      }
+      .slide-subtitle {
+        font-size: 24px;
+        font-weight: bold;
+        fill: #3498db;
+      }
+      .content-text {
+        font-size: 16px;
+        fill: #34495e;
+        line-height: 1.5;
+      }
+      .small-text {
+        font-size: 16px;
+        fill: #34495e;
+      }
+      .tiny-text {
+        font-size: 13px;
+        fill: #34495e;
+      }
+      .highlight {
+        font-weight: bold;
+        fill: #e74c3c;
+      }
+      .footer {
+        font-size: 14px;
+        fill: #7f8c8d;
+      }
+    </style>
+    
+    <!-- 화살표 마커 정의 -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" />
+    </marker>
+    
+    <!-- 대시 화살표 마커 정의 -->
+    <marker id="dashedarrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+  </defs>
+  
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#ecf0f1" rx="10" ry="10" />
+  <rect x="20" y="20" width="760" height="560" fill="white" rx="5" ry="5" stroke="#bdc3c7" stroke-width="1" />
+  
+  <!-- 슬라이드 제목 -->
+  <text x="400" y="60" text-anchor="middle" class="slide-title">RAG란 무엇인가?</text>
+  
+  <!-- 메인 컨텐츠 - RAG 정의 -->
+  <g id="main-content">
+    <!-- RAG 정의 -->
+    <rect x="100" y="80" width="600" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#bdc3c7" stroke-width="1" />
+    
+    <text x="400" y="110" text-anchor="middle" class="content-text">
+      <tspan x="400" dy="0" text-anchor="middle">RAG란, LLM이 특정 문서나 데이터를 참고하여,</tspan>
+      <tspan x="400" dy="25" text-anchor="middle">해당 문서에 맞는 내용을 찾아서, 사람이 대답하듯</tspan>
+      <tspan x="400" dy="25" text-anchor="middle">자연스럽게 답변을 만들어내는 방식입니다.</tspan>
+    </text>
+    
+    <!-- 표준 RAG 아키텍처 다이어그램 섹션 타이틀 -->
+    <text x="400" y="230" text-anchor="middle" class="slide-subtitle">RAG 아키텍처 다이어그램</text>
+    
+    <!-- RAG 표준 아키텍처 다이어그램 -->
+    <g transform="translate(130, 170)">
+      <!-- 사용자/쿼리 부분 -->
+      <rect x="0" y="100" width="100" height="50" rx="5" ry="5" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="1.5" />
+      <text x="50" y="125" text-anchor="middle" font-weight="bold" class="small-text">사용자 쿼리</text>
+      <text x="50" y="140" text-anchor="middle" class="tiny-text">"한국어 RAG는?"</text>
+      
+      <!-- 쿼리 프로세싱 화살표 -->
+      <line x1="100" y1="125" x2="140" y2="125" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      <text x="120" y="115" text-anchor="middle" class="tiny-text">1. 쿼리</text>
+      
+      <!-- 임베딩 모델 부분 -->
+      <rect x="140" y="85" width="100" height="80" rx="5" ry="5" fill="#e74c3c" fill-opacity="0.2" stroke="#e74c3c" stroke-width="1.5" />
+      <text x="190" y="110" text-anchor="middle" font-weight="bold" class="small-text">임베딩 모델</text>
+      <text x="190" y="128" text-anchor="middle" class="tiny-text">텍스트를</text>
+      <text x="190" y="143" text-anchor="middle" class="tiny-text">벡터로 변환</text>
+      
+      <!-- 벡터 DB 부분과 연결 -->
+      <line x1="190" y1="165" x2="190" y2="205" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      <text x="205" y="190" text-anchor="start" class="tiny-text">2. 벡터 검색</text>
+      
+      <!-- 벡터 DB 부분 -->
+      <rect x="140" y="205" width="100" height="70" rx="5" ry="5" fill="#2ecc71" fill-opacity="0.2" stroke="#2ecc71" stroke-width="1.5" />
+      <text x="190" y="230" text-anchor="middle" font-weight="bold" class="small-text">벡터 DB</text>
+      <text x="190" y="248" text-anchor="middle" class="tiny-text">문서 인덱스</text>
+      
+      <!-- 검색된 컨텍스트 화살표 -->
+      <line x1="240" y1="240" x2="280" y2="240" stroke="#2ecc71" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      <text x="260" y="230" text-anchor="middle" class="tiny-text">3. 검색</text>
+      
+      <!-- 문서 저장소(외부 데이터) -->
+      <rect x="140" y="305" width="100" height="70" rx="5" ry="5" fill="#f39c12" fill-opacity="0.2" stroke="#f39c12" stroke-width="1.5" />
+      <text x="190" y="330" text-anchor="middle" font-weight="bold" class="small-text">문서 저장소</text>
+      <text x="190" y="348" text-anchor="middle" class="tiny-text">외부 데이터</text>
+      
+      <!-- 문서와 벡터 DB 연결 -->
+      <line x1="190" y1="305" x2="190" y2="275" stroke="#f39c12" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      
+      <!-- 검색된 컨텍스트 부분 -->
+      <rect x="280" y="205" width="100" height="70" rx="5" ry="5" fill="#9b59b6" fill-opacity="0.2" stroke="#9b59b6" stroke-width="1.5" />
+      <text x="330" y="230" text-anchor="middle" font-weight="bold" class="small-text">검색된 컨텍스트</text>
+      <text x="330" y="248" text-anchor="middle" class="tiny-text">관련 지식 조각</text>
+      
+      <!-- 증강된 프롬프트 화살표 -->
+      <line x1="330" y1="205" x2="330" y2="165" stroke="#9b59b6" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      <text x="345" y="190" text-anchor="start" class="tiny-text">4. 증강</text>
+      
+      <!-- LLM 부분 -->
+      <rect x="280" y="85" width="100" height="80" rx="5" ry="5" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="1.5" />
+      <text x="330" y="110" text-anchor="middle" font-weight="bold" class="small-text">LLM</text>
+      <text x="330" y="128" text-anchor="middle" class="tiny-text">증강된 쿼리로</text>
+      <text x="330" y="143" text-anchor="middle" class="tiny-text">답변 생성</text>
+      
+      <!-- 답변 화살표 -->
+      <line x1="380" y1="125" x2="420" y2="125" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrowhead)" />
+      <text x="400" y="115" text-anchor="middle" class="tiny-text">5. 답변</text>
+      
+      <!-- 최종 답변 부분 -->
+      <rect x="420" y="100" width="100" height="50" rx="5" ry="5" fill="#27ae60" fill-opacity="0.2" stroke="#27ae60" stroke-width="1.5" />
+      <text x="470" y="125" text-anchor="middle" font-weight="bold" class="small-text">최종 답변</text>
+      <text x="470" y="140" text-anchor="middle" class="tiny-text">정확하고 신뢰성 있는 답변</text>
+    </g>
+  </g>
+  
+ 
+</svg> 
